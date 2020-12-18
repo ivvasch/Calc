@@ -15,7 +15,7 @@ public class Panel extends JPanel {
             minus = new JButton("-"),
             multi = new JButton("*"),
             div = new JButton("/");
-    
+
 
 
     public Panel() {
@@ -68,12 +68,15 @@ public class Panel extends JPanel {
 
         field.setBounds(10, 10, 170, 50);
         field.setFont(font);
-//        field.set
         field.setEditable(false);
-        add("North", field);
+        add(field);
 
         ActionListener listener = (ActionEvent e) -> {
             JButton b = (JButton) e.getSource();
+            // если точка уже присутствует в числе, мы ограничиваем ее появление во второй раз. {
+            if (b.getText().equals(".") & field.getText().contains("."))
+                return;
+            // }
             field.setText(field.getText() + b.getText());
         };
 
